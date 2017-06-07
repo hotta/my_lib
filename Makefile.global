@@ -1,0 +1,17 @@
+# ag-stubs/Makefile.global
+#
+#	%  : ワイルドカード
+# $@ : ターゲット名
+# $< : 最初のコンポーネント
+# $? : コンポーネントの中でターゲットより新しいものすべて
+# $^ : すべてのコンポーネント
+# $* : マッチしたシステム
+
+CC = gcc
+CFLAGS  = -g -D__MBC_LINUX__ -Wall -Wextra -Werror -Wunused -O0
+CFLAGS += -I/opt/agent/include
+LDFLAGS = -Wl,-rpath,/opt/agent/modules -L/opt/agent/modules -lmbaapi 
+COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH:-%=%) -c
+
+%.o: %.c
+	$(COMPILE.c) -o $@ $<
