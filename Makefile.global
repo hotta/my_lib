@@ -1,0 +1,13 @@
+# my_lib/Makefile.global
+BIN_DIR	=	$(HOME)/my_lib
+INC_DIR	=	$(HOME)/my_lib
+TARGET_LIB  = $(BIN_DIR)/libmy_lib.so
+TARGET_BIN  = $(BIN_DIR)/mylib_test
+MAKE 		= make
+RM 			= rm -f
+CC 			= gcc
+LD 			= ld
+CFLAGS  = -g -Wall -Werror -O0 -I$(INC_DIR)
+.c.o:
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $<
+
